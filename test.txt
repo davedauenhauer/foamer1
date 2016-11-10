@@ -1,0 +1,8 @@
+export TS_UAA_HOST="https://95badd5d-38c5-4455-850c-980ad417d5dc.predix-uaa.run.aws-usw02-pr.ice.predix.io"
+export TS_UAA_TOKEN_URL="/oauth/token"
+export TS_UAA_CLIENT_ID="ddclient13"
+export TS_UAA_CLIENT_SECRET="ddauth13"
+export TS_ZONE_ID="01b0fa5b-ea24-4c5f-90b1-fbcf1c5c511c"
+export TS_INGEST="wss://gateway-predix-data-services.run.aws-usw02-pr.ice.predix.io/v1/stream/messages"
+export TS_QUERY="https://time-series-store-predix.run.aws-usw02-pr.ice.predix.io/v1/datapoints"
+export DEBUG=TRUE
