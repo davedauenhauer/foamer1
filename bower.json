@@ -1,0 +1,26 @@
+{
+  "name": "bower.json",
+  "authors": [
+    "Jason Mulvin <210056264@ge.com>"
+  ],
+  "description": "Used for the predix time series UI",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "px-vis-timeseries": "^0.4.6"
+  }
+  "resolutions": {
+    "moment": "~2.13.0",
+    "px-datetime-common": "~0.5.0",
+    "px-rangepicker": "~1.1.0"
+  }
+}
