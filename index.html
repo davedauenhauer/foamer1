@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<link type="text/css" rel="stylesheet" href="app.css" />
+<meta charset="utf-8" />
+  <title>WebSocket Test</title>
+<script language="javascript" type="text/javascript">
+var wsUri = "ws://%s:3000/websocket";
+var websocket;
+var output;
+function init()
+{
+  websocket = new WebSocket(wsUri);
+  websocket.onmessage = function(evt) { onMessage(evt) };
+  websocket.onclose = function(evt) { onClose(evt) };
+}
+function onStart( evt )
+{
+    var myTextArea = document.getElementById("display");
+    myTextArea.value = "Starting..."
+    websocket.send("start")
+}
+function onStop( evt )
+{
+    var myTextArea = document.getElementById("display");
+    websocket.send("stop")
+    myTextArea.value = myTextArea.value + "\nStopped"
+}
+function onMessage( evt )
+{
+  var myTextArea = document.getElementById("display");
+  myTextArea.value = evt.data
+}
+function onClose( evt )
+{
+    myTextArea.value = myTextArea.value + "\nStopped"
+}
+window.addEventListener("load", init, false);
+</script>
+
+</head>
+<body>
+  <nav class="navbar navbar-static-top navbar-inverse">
+    <div class="container">
+      <div class="row">
+        <h2 class="title">WebSocket Test</h2>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+      <div class="form-group">
+        <label for="display" class="col-sm-2 control-label">Foam Flow Counter</label>
+        <div class="col-sm-10">
+          <textarea id="display" class="form-control" visible="FALSE"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button class="btn btn-default" id="start" onclick="javascript:onStart()">Start Foam</button>
+          <button class="btn btn-danger" id="stop" onclick="javascript:onStop()">Stop Foam</button>
+        </div>
+      </div>
+  </div><nav class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+      <span class="brand">
+        <span class="ge-logo"></span>
+        <h2 style="color: white">Predix</h2>
+      </span>
+    </div>
+  </nav>
+</body>
+</html>
